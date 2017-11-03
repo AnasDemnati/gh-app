@@ -9,7 +9,6 @@
 
 module.exports = function (grunt) {
 
-  grunt.loadNpmTasks(‘grunt-build-control’);
   var pkg = require('./package.json');
 
   // Time how long tasks take. Can help when optimizing build times
@@ -420,32 +419,32 @@ module.exports = function (grunt) {
       ]
     },
     buildcontrol: {
-          options: {
-            dir: 'dist',
-            commit: true,
-            push: true,
-            message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
-          },
-          pages: {
-            options: {
-              remote: 'git@github.com:AnasDemnati/gh-app.git',
-              branch: 'gh-pages'
-            }
-          },
-          heroku: {
-            options: {
-              remote: 'git@github.com:AnasDemnati/gh-app.git',
-              branch: 'master',
-              tag: pkg.version
-            }
-          },
-          local: {
-            options: {
-              remote: '../',
-              branch: 'build'
-            }
-          }
-        },
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:AnasDemnati/gh-app.git',
+          branch: 'gh-pages'
+        }
+      },
+      heroku: {
+        options: {
+          remote: 'git@github.com:AnasDemnati/gh-app.git',
+          branch: 'master',
+          tag: pkg.version
+        }
+      },
+      local: {
+        options: {
+          remote: '../',
+          branch: 'build'
+        }
+      }
+    },
     // Test settings
     karma: {
       unit: {
