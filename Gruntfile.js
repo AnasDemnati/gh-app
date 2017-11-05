@@ -243,6 +243,7 @@ module.exports = function (grunt) {
         src: [
           '<%= yeoman.dist %>/scripts/{,*/}*.js',
           '<%= yeoman.dist %>/node_modules/ngcsv/{,*/}*.js',
+          '<%= yeoman.dist %>/bower_components/{,*/}*.js$',
           '<%= yeoman.dist %>/styles/{,*/}*.css',
           '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/fonts/*'
@@ -273,7 +274,7 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js', '<%= yeoman.dist %>/node_modules/{,*/}*.js'],
+      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js', '<%= yeoman.dist %>/node_modules/{,*/}*.js', '<%= yeoman.dist %>/bower_components/{,*/}*.js'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
@@ -378,6 +379,11 @@ module.exports = function (grunt) {
           cwd: '.tmp/concat/node_modules',
           src: '*.js',
           dest: '.tmp/concat/node_modules'
+        }, {
+          expand: true,
+          cwd: '.tmp/concat/bower_components',
+          src: '*.js',
+          dest: '.tmp/concat/bower_components'
         }]
       }
     },
@@ -410,6 +416,13 @@ module.exports = function (grunt) {
           expand:true,
           cwd:'node_modules',
           dest:'<%= yeoman.dist %>/node_modules',
+          src:['**']
+        },
+        {
+
+          expand:true,
+          cwd:'bower_components',
+          dest:'<%= yeoman.dist %>/bower_components',
           src:['**']
         },
          {
@@ -513,21 +526,21 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean:dist',
-    'wiredep',
-    'useminPrepare',
-    'concurrent:dist',
-    'postcss',
-    'ngtemplates',
-    'concat',
-    'ngAnnotate',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'filerev',
-    'usemin',
-    'htmlmin'
+    // 'clean:dist',
+    // 'wiredep',
+    // 'useminPrepare',
+    // 'concurrent:dist',
+    // 'postcss',
+    // 'ngtemplates',
+    // 'concat',
+    // 'ngAnnotate',
+    // 'copy:dist',
+    // 'cdnify',
+    // 'cssmin',
+    // 'uglify',
+    // 'filerev',
+    // 'usemin',
+    // 'htmlmin'
   ]);
 
   grunt.registerTask('default', [
