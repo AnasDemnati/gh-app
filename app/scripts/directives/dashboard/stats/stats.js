@@ -9,7 +9,7 @@
 angular.module('flightsOTP')
     .directive('stats',function() {
     	return {
-  		templateUrl:'views/stats/stats.html',
+  		templateUrl:'scripts/directives/dashboard/stats/stats.html',
   		restrict:'E',
   		replace:true,
   		scope: {

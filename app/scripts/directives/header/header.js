@@ -9,8 +9,8 @@
 angular.module('flightsOTP')
 	.directive('header',function(){
 		return {
-        templateUrl:'views/header/header.html',
+        templateUrl:'scripts/directives/header/header.html',
         restrict: 'E',
         replace: true,
-    	};
+    	}
 	});
