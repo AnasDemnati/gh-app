@@ -20,8 +20,8 @@
       rows  = csvString.match(/[^\r\n]+/g);
 
       // Get headers from first row
-      headers   = rows[0].split(',');
-      console.log(headers);
+      headers   = rows[0].replace(/"/g,"").split(',');
+      // console.log(headers);
 
       // Iterate each rows, explode its properties
       // Convert to JSON
@@ -30,8 +30,11 @@
         var params  = [];
         var element = {};
 
-        params  = rows[i].split(',');
+        params  = rows[i].replace(/"/g,"").split(',');
         for (var j = 0; j < params.length; j++) {
+          if (headers[j] === "CRS_DEP_TIME" || headers[j] === "CRS_ARR_TIME") {
+            params[j] = params[j].substr(0, params[j].length-2) + ":" + params[j].substr(params[j].length-2);
+          }
           element[ headers[j]? headers [j] : 'other' ] = params[j];
         }
 
